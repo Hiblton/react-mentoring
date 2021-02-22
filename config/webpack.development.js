@@ -6,7 +6,7 @@ module.exports = {
   },
   devServer: {
     compress: false,
-    open: "chrome",
+    open: true,
     stats: "errors-only",
     overlay: true,
   },
