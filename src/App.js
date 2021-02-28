@@ -1,6 +1,7 @@
 import { ErrorBoundary } from "react-error-boundary";
 
 import { ErrorFallback } from "./services";
+import { HomePage } from "./pages";
 
 // TODO: add routing
 const App = () => (
@@ -8,7 +9,7 @@ const App = () => (
     FallbackComponent={ErrorFallback}
     onReset={() => window.location.reload} // just for an experiment
   >
-    <h1>HomePage component</h1>
+    <HomePage></HomePage>
   </ErrorBoundary>
 );
 
