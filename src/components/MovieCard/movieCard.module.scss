@@ -1,0 +1,29 @@
+@import "./../../variables.scss";
+@import "./../../mixins.scss";
+
+.movieCard {
+  color: $white;
+  cursor: pointer;
+}
+
+.movieCover {
+  height: 370px;
+  width: 100%;
+}
+
+.description {
+  font-weight: 100;
+  margin-top: 10px;
+  @include flex-row;
+
+  .movieYear {
+    border-radius: 4px;
+    border: 1px solid $light-grey;
+    font-size: 0.9rem;
+    padding: 0 8px;
+  }
+}
+
+.movieGenre {
+  font-size: 0.75rem;
+}
