@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import styles from "./SortingPanel.module.scss";
 
 const SortingPanel = ({ activeSorting = "RELEASE", sortingList = [] }) => {
@@ -24,3 +26,8 @@ const SortingPanel = ({ activeSorting = "RELEASE", sortingList = [] }) => {
 };
 
 export default SortingPanel;
+
+SortingPanel.propTypes = {
+  activeSorting: PropTypes.string,
+  sortingList: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

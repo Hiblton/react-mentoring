@@ -1,18 +1,28 @@
+import PropTypes from "prop-types";
+
 import styles from "./movieCard.module.scss";
 
-const MovieCard = ({ movie }) => (
+const MovieCard = ({
+  title,
+  releaseYear,
+  genre,
+  coverImage = "/default-cover.jpg",
+}) => (
   <div className={styles.movieCard}>
-    <img
-      className={styles.movieCover}
-      src="https://i.redd.it/a0fjdbjgnx821.jpg"
-      alt="Bohemian Phapsody"
-    />
+    <img className={styles.movieCover} src={coverImage} alt={title} />
     <div className={styles.description}>
-      <h4 className={styles.movieTitle}>Bohemian Phapsody</h4>
-      <span className={styles.movieYear}>2003</span>
+      <h4 className={styles.movieTitle}>{title}</h4>
+      <span className={styles.movieYear}>{releaseYear}</span>
     </div>
-    <span className={styles.movieGenre}>Drama, Biography, Music</span>
+    <span className={styles.movieGenre}>{genre}</span>
   </div>
 );
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  releaseYear: PropTypes.number.isRequired,
+  genre: PropTypes.string.isRequired,
+  coverImage: PropTypes.string,
+};

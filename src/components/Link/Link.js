@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import styles from "./Link.module.scss";
 
 const Link = ({ href, title }) => (
@@ -11,3 +13,8 @@ const Link = ({ href, title }) => (
 );
 
 export default Link;
+
+Link.propTypes = {
+  href: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};

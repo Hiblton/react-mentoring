@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import styles from "./FilterPanel.module.scss";
 
 const FilterPanel = ({ activeFilter = "ALL", filterList = [] }) => {
@@ -21,3 +23,8 @@ const FilterPanel = ({ activeFilter = "ALL", filterList = [] }) => {
 };
 
 export default FilterPanel;
+
+FilterPanel.propTypes = {
+  activeFilter: PropTypes.string,
+  filterList: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

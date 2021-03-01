@@ -1,7 +1,7 @@
 import { Header, Footer } from "../../layout";
 import { MoviesCounter, MoviesList, MoviesNotFound } from "../../components";
 
-const moviesList = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // todo for test
+const moviesList = require("./../../../data.json");
 
 const HomePage = () => (
   <>

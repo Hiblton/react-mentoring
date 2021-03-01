@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1000,
+        "title": "Pulp Fiction",
+        "releaseYear": 2004,
+        "genre": "Action & Adventure",
+        "coverImage": "https://images-na.ssl-images-amazon.com/images/I/5117V75KYYL._AC_SY445_.jpg"
+    },
+    {
+        "id": 1001,
+        "title": "Bohemian Phapsody",
+        "releaseYear": 2003,
+        "genre": "Drama, Biography, Music",
+        "coverImage": "https://i.redd.it/a0fjdbjgnx821.jpg"
+    },
+    {
+        "id": 1002,
+        "title": "Kill Bill: Vol 2",
+        "releaseYear": 1994,
+        "genre": "Oscar winning movie",
+        "coverImage": "https://occ-0-1009-1001.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABdi5796UaXZuyYxzb4S3pGZ--SpwfZfoVcVOip6R3JSgv-RkAhDQFQDn6fVpCZz9ZIT70U1EYpvHp-9jzHm7sgyeg_OOd1Bh3Q.jpg"
+    },
+    {
+        "id": 1003,
+        "title": "Pulp Fiction",
+        "releaseYear": 2004,
+        "genre": "Action & Adventure",
+        "coverImage": "https://images-na.ssl-images-amazon.com/images/I/5117V75KYYL._AC_SY445_.jpg"
+    },
+    {
+        "id": 1004,
+        "title": "Bohemian Phapsody",
+        "releaseYear": 2003,
+        "genre": "Drama, Biography, Music",
+        "coverImage": "https://i.redd.it/a0fjdbjgnx821.jpg"
+    },
+    {
+        "id": 1005,
+        "title": "Kill Bill: Vol 2",
+        "releaseYear": 1994,
+        "genre": "Oscar winning movie",
+        "coverImage": "https://occ-0-1009-1001.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABdi5796UaXZuyYxzb4S3pGZ--SpwfZfoVcVOip6R3JSgv-RkAhDQFQDn6fVpCZz9ZIT70U1EYpvHp-9jzHm7sgyeg_OOd1Bh3Q.jpg"
+    }
+]

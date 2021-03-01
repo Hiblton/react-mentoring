@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import styles from "./MoviesCounter.module.scss";
 
 const MoviesCounter = ({ count }) => (
@@ -7,3 +9,7 @@ const MoviesCounter = ({ count }) => (
 );
 
 export default MoviesCounter;
+
+MoviesCounter.propTypes = {
+  count: PropTypes.number.isRequired,
+};
