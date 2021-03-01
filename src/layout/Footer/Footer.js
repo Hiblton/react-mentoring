@@ -1,7 +1,9 @@
+import styles from "./Footer.module.scss";
+
 import { Logo } from "../../components";
 
 const Footer = () => (
-  <footer>
+  <footer className={styles.footer}>
     <Logo />
   </footer>
 );

@@ -1,0 +1,9 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.footer {
+  background-color: $grey;
+  height: 100px;
+  margin-top: auto;
+  @include flex-center;
+}

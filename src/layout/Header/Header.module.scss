@@ -1,0 +1,40 @@
+@import "./../../variables.scss";
+@import "./../../mixins.scss";
+
+.background {
+  background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/e178a4e7-4f52-4661-b2ae-41efa25dca7c/eb618394-24cd-43ae-8799-c1a76a7bcbfc/BY-en-20210222-popsignuptwoweeks-perspective_alpha_website_small.jpg);
+  background-size: cover;
+  filter: blur(1px) brightness(0.3);
+  left: 0;
+  min-height: 400px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.header {
+  margin: 0 auto;
+  min-height: 400px;
+  position: relative;
+  width: $contentWidth;
+}
+
+.logoWrapper {
+  @include flex-row;
+}
+
+.toolbarWrapper {
+  border-bottom: 2px solid $grey;
+  margin: 0 auto;
+  min-height: 50px;
+  width: $contentWidth;
+  @include flex-row;
+}
+
+.titleWrapper {
+  margin: 30px 160px;
+  h1 {
+    margin-bottom: 30px;
+  }
+}

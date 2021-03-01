@@ -1,5 +1,5 @@
-const Title = ({ title, color = "white" }) => (
-  <h1 style={{ color, fontWeight: 100 }} title={title}>
+const Title = ({ title, color = "white", fontWeight = 100 }) => (
+  <h1 style={{ color, fontWeight }} title={title}>
     {title}
   </h1>
 );

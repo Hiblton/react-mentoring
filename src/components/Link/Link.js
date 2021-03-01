@@ -1,5 +1,11 @@
+import styles from "./Link.module.scss";
+
 const Link = ({ href, title }) => (
-  <a href={href} aria-label={title}>
+  <a
+    className={`${styles.link} ${styles.transparent}`}
+    aria-label={title}
+    href={href}
+  >
     {title}
   </a>
 );

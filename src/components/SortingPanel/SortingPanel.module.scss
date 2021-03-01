@@ -1,0 +1,22 @@
+@import "./../../variables.scss";
+@import "./../../mixins.scss";
+
+.sortingWrapper {
+  height: 100%;
+  @include flex-center;
+
+  .sortingLabel {
+    color: $light-grey;
+    margin-right: 24px;
+  }
+
+  .sortingSelect {
+    background-color: $dark-grey;
+    border: none;
+    color: $white;
+    height: 100%;
+    .sortingOptionActive {
+      background-color: $red;
+    }
+  }
+}
