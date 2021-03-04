@@ -1,0 +1,21 @@
+@import "./variables.scss";
+
+html,
+body,
+#root {
+  background-color: $dark-grey;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+#root {
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#root main {
+  width: $contentWidth;
+  margin: auto;
+}

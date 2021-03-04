@@ -1,0 +1,32 @@
+@import "./../../variables.scss";
+@import "./../../mixins.scss";
+
+.searchPanelWrapper {
+  height: 50px;
+  @include flex-row;
+
+  .searchPanelInput {
+    background-color: $light-grey-08;
+    border-radius: 4px;
+    border: none;
+    color: $white;
+    font-size: 1.2em;
+    height: 100%;
+    padding: 12px;
+    width: 79%;
+    &::placeholder {
+      color: $white;
+      font-size: 1em;
+    }
+  }
+
+  .searchPanelButton {
+    background-color: $red;
+    border-radius: 4px;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+  }
+}

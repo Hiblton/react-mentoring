@@ -1,0 +1,18 @@
+@import "./../../variables.scss";
+@import "./../../mixins.scss";
+
+.link {
+  border-radius: 3px;
+  color: $red;
+  height: 40px;
+  text-decoration: none;
+  width: 144px;
+  @include flex-center;
+}
+
+.transparent {
+  background-color: $light-grey-05;
+  &:hover {
+    background-color: $light-grey-08;
+  }
+}
