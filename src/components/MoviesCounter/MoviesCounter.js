@@ -8,7 +8,7 @@ const MoviesCounter = ({ count }) => (
   </h3>
 );
 
-export default MoviesCounter;
+export { MoviesCounter };
 
 MoviesCounter.propTypes = {
   count: PropTypes.number.isRequired,

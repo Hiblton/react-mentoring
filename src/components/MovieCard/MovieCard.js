@@ -18,7 +18,7 @@ const MovieCard = ({
   </div>
 );
 
-export default MovieCard;
+export { MovieCard };
 
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,

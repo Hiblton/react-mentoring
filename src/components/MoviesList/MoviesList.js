@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import styles from "./MoviesList.module.scss";
 
-import MovieCard from "../MovieCard/MovieCard";
+import { MovieCard } from "../MovieCard/MovieCard";
 
 const MoviesList = ({ movies = [] }) => {
   return (
@@ -20,7 +20,7 @@ const MoviesList = ({ movies = [] }) => {
   );
 };
 
-export default MoviesList;
+export { MoviesList };
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(

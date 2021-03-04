@@ -2,7 +2,7 @@ import styles from "./Header.module.scss";
 
 import {
   Logo,
-  Link,
+  ButtonLink,
   Title,
   SearchPanel,
   FilterPanel,
@@ -15,7 +15,7 @@ const Header = () => (
     <header className={styles.header}>
       <div className={styles.logoWrapper}>
         <Logo />
-        <Link href="#" title="+ ADD MOVIE" />
+        <ButtonLink href="#" title="+ ADD MOVIE" />
       </div>
       <div className={styles.titleWrapper}>
         <Title title="FIND YOUR MOVIE" />
@@ -25,11 +25,11 @@ const Header = () => (
 
     <section className={styles.toolbarWrapper}>
       <FilterPanel
-        filterList={["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]}
+        filterOptions={["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]}
       />
-      <SortingPanel sortingList={["RELEASE", "RATING", "DURATION"]} />
+      <SortingPanel sortingOptions={["RELEASE", "RATING", "DURATION"]} />
     </section>
   </>
 );
 
-export default Header;
+export { Header };

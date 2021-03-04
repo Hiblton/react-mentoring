@@ -4,4 +4,4 @@ const Logo = () => (
   <img src={imgSrc} alt="Logo" aria-label="Logo" width="175" />
 );
 
-export default Logo;
+export { Logo };

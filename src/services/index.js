@@ -1,3 +1,3 @@
-import ErrorFallback from "./Error/ErrorFallback";
+import { ErrorFallback } from "./Error/ErrorFallback";
 
 export { ErrorFallback };

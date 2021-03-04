@@ -6,7 +6,7 @@ const Title = ({ title, color = "white", fontWeight = 100 }) => (
   </h1>
 );
 
-export default Title;
+export { Title };
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,

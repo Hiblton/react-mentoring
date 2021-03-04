@@ -10,4 +10,4 @@ const SearchPanel = () => (
   </div>
 );
 
-export default SearchPanel;
+export { SearchPanel };

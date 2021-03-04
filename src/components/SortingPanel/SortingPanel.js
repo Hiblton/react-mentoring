@@ -2,19 +2,19 @@ import PropTypes from "prop-types";
 
 import styles from "./SortingPanel.module.scss";
 
-const SortingPanel = ({ activeSorting = "RELEASE", sortingList = [] }) => {
+const SortingPanel = ({ activeSorting = "RELEASE", sortingOptions = [] }) => {
   return (
     <div className={styles.sortingWrapper}>
       <span className={styles.sortingLabel}>SORT BY</span>
       <select className={styles.sortingSelect}>
-        {sortingList.map((item, index) => {
+        {sortingOptions.map((item) => {
           return (
             <option
               className={`${
                 activeSorting === item ? styles.sortingOptionActive : ""
               }`}
               value={item}
-              key={index}
+              key={item}
             >
               {item}
             </option>
@@ -25,7 +25,7 @@ const SortingPanel = ({ activeSorting = "RELEASE", sortingList = [] }) => {
   );
 };
 
-export default SortingPanel;
+export { SortingPanel };
 
 SortingPanel.propTypes = {
   activeSorting: PropTypes.string,

@@ -13,4 +13,4 @@ const App = () => (
   </ErrorBoundary>
 );
 
-export default App;
+export { App };

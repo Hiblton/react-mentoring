@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-import styles from "./Link.module.scss";
+import styles from "./ButtonLink.module.scss";
 
-const Link = ({ href, title }) => (
+const ButtonLink = ({ href, title }) => (
   <a
     className={`${styles.link} ${styles.transparent}`}
     aria-label={title}
@@ -12,9 +12,9 @@ const Link = ({ href, title }) => (
   </a>
 );
 
-export default Link;
+export { ButtonLink };
 
-Link.propTypes = {
+ButtonLink.propTypes = {
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

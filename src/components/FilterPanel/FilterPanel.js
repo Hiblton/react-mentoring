@@ -2,16 +2,16 @@ import PropTypes from "prop-types";
 
 import styles from "./FilterPanel.module.scss";
 
-const FilterPanel = ({ activeFilter = "ALL", filterList = [] }) => {
+const FilterPanel = ({ activeFilter = "ALL", filterOptions = [] }) => {
   return (
     <ul className={styles.filterWrapper}>
-      {filterList.map((item, index) => {
+      {filterOptions.map((item) => {
         return (
           <li
             className={`${styles.filterItem} ${
               activeFilter === item ? styles.active : ""
             }`}
-            key={index}
+            key={item}
             tabIndex="0"
           >
             <span>{item}</span>
@@ -22,7 +22,7 @@ const FilterPanel = ({ activeFilter = "ALL", filterList = [] }) => {
   );
 };
 
-export default FilterPanel;
+export { FilterPanel };
 
 FilterPanel.propTypes = {
   activeFilter: PropTypes.string,

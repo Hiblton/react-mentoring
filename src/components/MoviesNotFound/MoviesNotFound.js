@@ -1,6 +1,6 @@
 import styles from "./MoviesNotFound.module.scss";
 
-import Title from "../Title/Title";
+import { Title } from "../Title/Title";
 
 const MoviesNotFound = () => (
   <div className={styles.titleWrapper}>
@@ -8,4 +8,4 @@ const MoviesNotFound = () => (
   </div>
 );
 
-export default MoviesNotFound;
+export { MoviesNotFound };
