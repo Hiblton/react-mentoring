@@ -1,35 +1,48 @@
 import styles from "./Header.module.scss";
-
+import { useState } from "react";
 import {
   Logo,
-  ButtonLink,
   Title,
   SearchPanel,
   FilterPanel,
   SortingPanel,
+  MovieModal,
 } from "../../components";
 
-const Header = () => (
-  <>
-    <div className={styles.background}></div>
-    <header className={styles.header}>
-      <div className={styles.logoWrapper}>
-        <Logo />
-        <ButtonLink href="#" title="+ ADD MOVIE" />
-      </div>
-      <div className={styles.titleWrapper}>
-        <Title title="FIND YOUR MOVIE" />
-        <SearchPanel />
-      </div>
-    </header>
+const Header = () => {
+  const [movieModalOpened, movieModalState] = useState(false);
 
-    <section className={styles.toolbarWrapper}>
-      <FilterPanel
-        filterOptions={["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]}
-      />
-      <SortingPanel sortingOptions={["RELEASE", "RATING", "DURATION"]} />
-    </section>
-  </>
-);
+  return (
+    <>
+      <div className={styles.background}></div>
+      <header className={styles.header}>
+        <div className={styles.logoWrapper}>
+          <Logo />
+          <button
+            className={`${styles.button} ${styles.transparent}`}
+            onClick={() => movieModalState(true)}
+          >
+            + ADD MOVIE
+          </button>
+        </div>
+        <div className={styles.titleWrapper}>
+          <Title title="FIND YOUR MOVIE" />
+          <SearchPanel />
+        </div>
+      </header>
+
+      <section className={styles.toolbarWrapper}>
+        <FilterPanel
+          filterOptions={["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]}
+        />
+        <SortingPanel sortingOptions={["RELEASE", "RATING", "DURATION"]} />
+      </section>
+
+      {movieModalOpened && (
+        <MovieModal title="ADD MOVIE" onClose={() => movieModalState(false)} />
+      )}
+    </>
+  );
+};
 
 export { Header };

@@ -9,10 +9,11 @@ const MoviesList = ({ movies = [] }) => {
     <div className={styles.moviesListWrapper}>
       {movies.map((item) => (
         <MovieCard
+          id={item.id}
           title={item.title}
-          releaseYear={item.releaseYear}
+          releaseDate={item.releaseDate}
           genre={item.genre}
-          coverImage={item.coverImage}
+          movieUrl={item.movieUrl}
           key={item.id}
         />
       ))}
@@ -27,9 +28,9 @@ MoviesList.propTypes = {
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       title: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired,
+      releaseDate: PropTypes.number.isRequired,
       genre: PropTypes.string.isRequired,
-      coverImage: PropTypes.string.isRequired,
+      movieUrl: PropTypes.string.isRequired,
     })
   ),
 };

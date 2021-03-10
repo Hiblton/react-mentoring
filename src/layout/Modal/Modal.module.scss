@@ -1,0 +1,22 @@
+@import "./../../variables.scss";
+@import "./../../mixins.scss";
+
+.overlay {
+  background-color: $light-grey-08;
+  height: 100%;
+  @include flex-center;
+}
+
+.modal {
+  background-color: $dark-grey;
+  color: $white;
+  padding: 20px 30px;
+  width: $modalWidth;
+  .closeIcon {
+    background-color: transparent;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    float: right;
+  }
+}

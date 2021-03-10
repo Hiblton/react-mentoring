@@ -1,3 +1,5 @@
+import { DeleteMovieModal } from "./DeleteMovieModal/DeleteMovieModal";
+import { MovieModal } from "./MovieModal/MovieModal";
 import { FilterPanel } from "./FilterPanel/FilterPanel";
 import { ButtonLink } from "./ButtonLink/ButtonLink";
 import { Logo } from "./Logo/Logo";
@@ -10,6 +12,8 @@ import { SortingPanel } from "./SortingPanel/SortingPanel";
 import { Title } from "./Title/Title";
 
 export {
+  DeleteMovieModal,
+  MovieModal,
   FilterPanel,
   ButtonLink,
   Logo,

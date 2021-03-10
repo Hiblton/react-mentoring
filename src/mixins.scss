@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -8,4 +10,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@mixin button($style) {
+  border-radius: $borderRadius;
+  border: 2px solid $red;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+  width: 144px;
+  @if $style == "primary" {
+    background-color: $red;
+    color: $white;
+  }
+  @if $style == "secondary" {
+    background-color: inherit;
+    color: $red;
+  }
 }

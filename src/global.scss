@@ -19,3 +19,10 @@ body,
   width: $contentWidth;
   margin: auto;
 }
+
+.root-portal {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
