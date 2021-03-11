@@ -10,7 +10,7 @@ import {
 } from "../../components";
 
 const Header = () => {
-  const [movieModalOpened, movieModalState] = useState(false);
+  const [addMovieModalOpened, addMovieModal] = useState(false);
 
   return (
     <>
@@ -20,7 +20,7 @@ const Header = () => {
           <Logo />
           <button
             className={`${styles.button} ${styles.transparent}`}
-            onClick={() => movieModalState(true)}
+            onClick={() => addMovieModal(true)}
           >
             + ADD MOVIE
           </button>
@@ -38,8 +38,8 @@ const Header = () => {
         <SortingPanel sortingOptions={["RELEASE", "RATING", "DURATION"]} />
       </section>
 
-      {movieModalOpened && (
-        <MovieModal title="ADD MOVIE" onClose={() => movieModalState(false)} />
+      {addMovieModalOpened && (
+        <MovieModal title="ADD MOVIE" onClose={() => addMovieModal(false)} />
       )}
     </>
   );

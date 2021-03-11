@@ -7,6 +7,12 @@ import { Modal } from "../../layout";
 const MovieModal = ({ title, movie, onClose }) => {
   const close = (e) => onClose && onClose(e);
 
+  const genreOptions = [
+    "Action & Adventure",
+    "Drama, Biography, Music",
+    "Oscar winning movie",
+  ];
+
   return (
     <Modal title={title} onClose={() => close()}>
       <form>
@@ -18,7 +24,11 @@ const MovieModal = ({ title, movie, onClose }) => {
         ) : null}
         <div className={styles.formField}>
           <label>TITLE</label>
-          <input required placeholder="Title here" value={movie?.title} />
+          <input
+            required
+            placeholder="Title here"
+            defaultValue={movie?.title}
+          />
         </div>
         <div className={styles.formField}>
           <label>RELEASE DATE</label>
@@ -26,7 +36,7 @@ const MovieModal = ({ title, movie, onClose }) => {
             required
             placeholder="Select Date"
             type="date"
-            value={movie?.releaseDate}
+            defaultValue={movie?.releaseDate}
           />
         </div>
         <div className={styles.formField}>
@@ -35,24 +45,39 @@ const MovieModal = ({ title, movie, onClose }) => {
             required
             placeholder="Movie URL here"
             type="url"
-            value={movie?.movieUrl}
+            defaultValue={movie?.movieUrl}
           />
         </div>
         <div className={styles.formField}>
           <label>GENRE</label>
-          <select required placeholder="Select Genre" value={movie?.genre}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+          <select
+            required
+            placeholder="Select Genre"
+            defaultValue={movie?.genre}
+          >
+            <option value="">Select Genre</option>
+            {genreOptions.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
         <div className={styles.formField}>
           <label>OVERVIEW</label>
-          <input required placeholder="Overview here" value={movie?.overview} />
+          <input
+            required
+            placeholder="Overview here"
+            defaultValue={movie?.overview}
+          />
         </div>
         <div className={styles.formField}>
           <label>RUNTIME</label>
-          <input required placeholder="Runtime here" value={movie?.runtime} />
+          <input
+            required
+            placeholder="Runtime here"
+            defaultValue={movie?.runtime}
+          />
         </div>
         <div className={styles.formActions}>
           <button type="reset" className={styles.secondaryButton}>
@@ -74,11 +99,11 @@ MovieModal.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     title: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
+    releaseDate: PropTypes.string.isRequired,
     movieUrl: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
-    runtime: PropTypes.string.isRequired,
+    runtime: PropTypes.number.isRequired,
   }),
   onClose: PropTypes.func,
 };

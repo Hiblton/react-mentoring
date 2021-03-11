@@ -4,6 +4,26 @@
 .movieCard {
   color: $white;
   cursor: pointer;
+  position: relative;
+  .actionButtons {
+    display: none;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    button {
+      background-color: $red;
+      border-radius: $borderRadius;
+      border: none;
+      color: $white;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+  }
+  &:hover {
+    .actionButtons {
+      display: block;
+    }
+  }
 }
 
 .movieCover {

@@ -14,6 +14,8 @@ const MoviesList = ({ movies = [] }) => {
           releaseDate={item.releaseDate}
           genre={item.genre}
           movieUrl={item.movieUrl}
+          overview={item.overview}
+          runtime={item.runtime}
           key={item.id}
         />
       ))}
@@ -28,9 +30,11 @@ MoviesList.propTypes = {
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       title: PropTypes.string.isRequired,
-      releaseDate: PropTypes.number.isRequired,
+      releaseDate: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired,
       movieUrl: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      runtime: PropTypes.number.isRequired,
     })
   ),
 };
