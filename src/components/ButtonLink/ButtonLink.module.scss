@@ -2,7 +2,7 @@
 @import "./../../mixins.scss";
 
 .link {
-  border-radius: 3px;
+  border-radius: $borderRadius;
   color: $red;
   height: 40px;
   text-decoration: none;

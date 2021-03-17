@@ -26,5 +26,5 @@ export { FilterPanel };
 
 FilterPanel.propTypes = {
   activeFilter: PropTypes.string,
-  filterList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filterOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

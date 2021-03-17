@@ -29,5 +29,5 @@ export { SortingPanel };
 
 SortingPanel.propTypes = {
   activeSorting: PropTypes.string,
-  sortingList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sortingOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

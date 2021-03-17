@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+@import "./../../mixins.scss";
+
+.formField {
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  label {
+    color: $red;
+  }
+  input,
+  select {
+    background-color: $grey;
+    border-radius: $borderRadius;
+    border: none;
+    color: $white;
+    height: 40px;
+    padding: 12px;
+  }
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 40px 0 10px;
+  .secondaryButton {
+    @include button("secondary");
+  }
+  .primaryButton {
+    @include button("primary");
+  }
+}

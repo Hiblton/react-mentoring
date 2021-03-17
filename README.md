@@ -1,22 +1,18 @@
 ### React Mentoring Program 2021
 
-## Hometask 2
+## Hometask 4
 
 # Description
 
-Write components implementing HTML markup for required design for home page of InVision prototype (Only UI part). For this part, no need to implement API calls and routing, the task can be done with mocked data.
-
-
-Use <ErrorBoundary> component for catching and displaying errors https://reactjs.org/docs/error-boundaries.html. You could create one component and wrap all your application or use several components.
-
+Implement markup and styles for “Add movie”, “Edit”, “Delete” modal windows and “sorting”. No need to implement real API calls. Only add pages with mocked data. No need to implement hooks in this task.
 
 Evaluation criteria*
 
-2 - Markup is done with React Components and React Fragments (parent-child);
-3 - Apply styles (no need to do pixel perfect and strict colors following);
-4 - Use PropTypes;
-5 - Use <ErrorBoundary> component for catching and displaying errors.
+2 - Implementation of markup and styles;
+3 - Use stateless/stateful approach;
+4 - Use React synthetic events;
+5 - Use lifecycle methods (discuss with mentor).
 
-! Use smart/dumb components approach 100% decomposition (estimated by mentor).
+! Use smart/dumb components approach 100% decomposition (estimated by mentor)
 
 *Each mark includes previous mark criteria.
