@@ -5,15 +5,15 @@ import { DeleteMovieModal } from "../../components";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
-  const [editMovieModalOpened, editMovieModal] = useState(false);
-  const [deleteMovieModalOpened, deleteMovieModal] = useState(false);
+  const [isEditMovieModalOpened, setEditMovieModalOpened] = useState(false);
+  const [isDeleteMovieModalOpened, setDeleteMovieModalOpened] = useState(false);
 
   return (
     <>
       <div className={styles.movieCard}>
         <div className={styles.actionButtons}>
-          <button onClick={() => editMovieModal(true)}>Edit</button>
-          <button onClick={() => deleteMovieModal(true)}>Delete</button>
+          <button onClick={() => setEditMovieModalOpened(true)}>Edit</button>
+          <button onClick={() => setDeleteMovieModalOpened(true)}>Delete</button>
         </div>
         <img
           className={styles.movieCover}
@@ -28,17 +28,17 @@ const MovieCard = (movie) => {
         </div>
         <span className={styles.movieGenre}>{movie?.genre}</span>
       </div>
-      {editMovieModalOpened && (
+      {isEditMovieModalOpened && (
         <MovieModal
           title="EDIT MOVIE"
           movie={movie}
-          onClose={() => editMovieModal(false)}
+          onClose={() => setEditMovieModalOpened(false)}
         />
       )}
-      {deleteMovieModalOpened && (
+      {isDeleteMovieModalOpened && (
         <DeleteMovieModal
           id={movie?.id}
-          onClose={() => deleteMovieModal(false)}
+          onClose={() => setDeleteMovieModalOpened(false)}
         ></DeleteMovieModal>
       )}
     </>
