@@ -1,0 +1,50 @@
+@import "./../../variables.scss";
+@import "./../../mixins.scss";
+
+.movieDetails {
+  color: $white;
+  display: flex;
+
+  .movieCover {
+    height: calc(370px * 0.75);
+    width: calc(243px * 0.75);
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+
+    .rating {
+      align-items: center;
+      border-radius: 50%;
+      border: 2px solid $light-grey;
+      color: lightgreen;
+      display: flex;
+      font-size: 1.25rem;
+      height: 50px;
+      justify-content: center;
+      margin-left: 20px;
+      width: 50px;
+    }
+
+    .movieGenre,
+    .overview {
+      font-size: 0.9rem;
+    }
+
+    .dateAndRintime {
+      color: $red;
+      font-size: 1.5rem;
+      margin: 20px 0;
+
+      .runtime {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.inlineFlex {
+  display: inline-flex;
+}

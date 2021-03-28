@@ -7,9 +7,10 @@ import {
   FilterPanel,
   SortingPanel,
   MovieModal,
+  MovieDetails,
 } from "../../components";
 
-const Header = () => {
+const Header = ({ movie }) => {
   const [isAddMovieModalOpened, setAddMovieModalOpened] = useState(false);
 
   return (
@@ -25,10 +26,14 @@ const Header = () => {
             + ADD MOVIE
           </button>
         </div>
-        <div className={styles.titleWrapper}>
-          <Title title="FIND YOUR MOVIE" />
-          <SearchPanel />
-        </div>
+        {movie ? (
+          <MovieDetails movie={movie}></MovieDetails>
+        ) : (
+          <div className={styles.titleWrapper}>
+            <Title title="FIND YOUR MOVIE" />
+            <SearchPanel />
+          </div>
+        )}
       </header>
 
       <section className={styles.toolbarWrapper}>
@@ -39,7 +44,10 @@ const Header = () => {
       </section>
 
       {isAddMovieModalOpened && (
-        <MovieModal title="ADD MOVIE" onClose={() => setAddMovieModalOpened(false)} />
+        <MovieModal
+          title="ADD MOVIE"
+          onClose={() => setAddMovieModalOpened(false)}
+        />
       )}
     </>
   );

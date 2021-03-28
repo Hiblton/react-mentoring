@@ -4,6 +4,7 @@ import { FilterPanel } from "./FilterPanel/FilterPanel";
 import { ButtonLink } from "./ButtonLink/ButtonLink";
 import { Logo } from "./Logo/Logo";
 import { MovieCard } from "./MovieCard/MovieCard";
+import { MovieDetails } from "./MovieDetails/MovieDetails";
 import { MoviesCounter } from "./MoviesCounter/MoviesCounter";
 import { MoviesList } from "./MoviesList/MoviesList";
 import { MoviesNotFound } from "./MoviesNotFound/MoviesNotFound";
@@ -18,6 +19,7 @@ export {
   ButtonLink,
   Logo,
   MovieCard,
+  MovieDetails,
   MoviesCounter,
   MoviesList,
   MoviesNotFound,
