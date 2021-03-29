@@ -1,19 +1,25 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
-import { MovieModal } from "../../components";
-import { DeleteMovieModal } from "../../components";
+import { useContext, useState } from "react";
+import { MovieModal, DeleteMovieModal } from "../../components";
+import { MovieContext } from "../../context";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
+  const { dispatch } = useContext(MovieContext);
   const [isEditMovieModalOpened, setEditMovieModalOpened] = useState(false);
   const [isDeleteMovieModalOpened, setDeleteMovieModalOpened] = useState(false);
 
   return (
     <>
-      <div className={styles.movieCard}>
+      <div
+        className={styles.movieCard}
+        onClick={() => dispatch({ type: "SELECT_MOVIE", payload: movie })}
+      >
         <div className={styles.actionButtons}>
           <button onClick={() => setEditMovieModalOpened(true)}>Edit</button>
-          <button onClick={() => setDeleteMovieModalOpened(true)}>Delete</button>
+          <button onClick={() => setDeleteMovieModalOpened(true)}>
+            Delete
+          </button>
         </div>
         <img
           className={styles.movieCover}

@@ -1,5 +1,5 @@
 import styles from "./Header.module.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Logo,
   Title,
@@ -9,8 +9,10 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
+import { MovieContext } from "./../../context";
 
-const Header = ({ movie }) => {
+const Header = () => {
+  const { selectedMovie, dispatch } = useContext(MovieContext);
   const [isAddMovieModalOpened, setAddMovieModalOpened] = useState(false);
 
   return (
@@ -19,15 +21,24 @@ const Header = ({ movie }) => {
       <header className={styles.header}>
         <div className={styles.logoWrapper}>
           <Logo />
-          <button
-            className={`${styles.button} ${styles.transparent}`}
-            onClick={() => setAddMovieModalOpened(true)}
-          >
-            + ADD MOVIE
-          </button>
+          {selectedMovie ? (
+            <button
+              className={`${styles.button} ${styles.transparent}`}
+              onClick={() => dispatch({ type: "SELECT_MOVIE", payload: null })}
+            >
+              SEARCH
+            </button>
+          ) : (
+            <button
+              className={`${styles.button} ${styles.transparent}`}
+              onClick={() => setAddMovieModalOpened(true)}
+            >
+              + ADD MOVIE
+            </button>
+          )}
         </div>
-        {movie ? (
-          <MovieDetails movie={movie}></MovieDetails>
+        {selectedMovie ? (
+          <MovieDetails movie={selectedMovie}></MovieDetails>
         ) : (
           <div className={styles.titleWrapper}>
             <Title title="FIND YOUR MOVIE" />
