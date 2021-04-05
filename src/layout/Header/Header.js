@@ -1,5 +1,5 @@
 import styles from "./Header.module.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Logo,
   Title,
@@ -7,9 +7,12 @@ import {
   FilterPanel,
   SortingPanel,
   MovieModal,
+  MovieDetails,
 } from "../../components";
+import { MovieContext, selectMovie } from "./../../context";
 
 const Header = () => {
+  const { selectedMovie, dispatch } = useContext(MovieContext);
   const [isAddMovieModalOpened, setAddMovieModalOpened] = useState(false);
 
   return (
@@ -18,17 +21,30 @@ const Header = () => {
       <header className={styles.header}>
         <div className={styles.logoWrapper}>
           <Logo />
-          <button
-            className={`${styles.button} ${styles.transparent}`}
-            onClick={() => setAddMovieModalOpened(true)}
-          >
-            + ADD MOVIE
-          </button>
+          {selectedMovie ? (
+            <button
+              className={`${styles.button} ${styles.transparent}`}
+              onClick={() => dispatch(selectMovie(null))}
+            >
+              SEARCH
+            </button>
+          ) : (
+            <button
+              className={`${styles.button} ${styles.transparent}`}
+              onClick={() => setAddMovieModalOpened(true)}
+            >
+              + ADD MOVIE
+            </button>
+          )}
         </div>
-        <div className={styles.titleWrapper}>
-          <Title title="FIND YOUR MOVIE" />
-          <SearchPanel />
-        </div>
+        {selectedMovie ? (
+          <MovieDetails movie={selectedMovie}></MovieDetails>
+        ) : (
+          <div className={styles.titleWrapper}>
+            <Title title="FIND YOUR MOVIE" />
+            <SearchPanel />
+          </div>
+        )}
       </header>
 
       <section className={styles.toolbarWrapper}>
@@ -39,7 +55,10 @@ const Header = () => {
       </section>
 
       {isAddMovieModalOpened && (
-        <MovieModal title="ADD MOVIE" onClose={() => setAddMovieModalOpened(false)} />
+        <MovieModal
+          title="ADD MOVIE"
+          onClose={() => setAddMovieModalOpened(false)}
+        />
       )}
     </>
   );
