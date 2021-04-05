@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";
 import { MovieModal, DeleteMovieModal } from "../../components";
-import { MovieContext } from "../../context";
+import { MovieContext, selectMovie } from "../../context";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
@@ -13,7 +13,7 @@ const MovieCard = (movie) => {
     <>
       <div
         className={styles.movieCard}
-        onClick={() => dispatch({ type: "SELECT_MOVIE", payload: movie })}
+        onClick={() => dispatch(selectMovie(movie))}
       >
         <div className={styles.actionButtons}>
           <button onClick={() => setEditMovieModalOpened(true)}>Edit</button>

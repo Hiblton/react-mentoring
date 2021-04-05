@@ -9,7 +9,7 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
-import { MovieContext } from "./../../context";
+import { MovieContext, selectMovie } from "./../../context";
 
 const Header = () => {
   const { selectedMovie, dispatch } = useContext(MovieContext);
@@ -24,7 +24,7 @@ const Header = () => {
           {selectedMovie ? (
             <button
               className={`${styles.button} ${styles.transparent}`}
-              onClick={() => dispatch({ type: "SELECT_MOVIE", payload: null })}
+              onClick={() => dispatch(selectMovie(null))}
             >
               SEARCH
             </button>
