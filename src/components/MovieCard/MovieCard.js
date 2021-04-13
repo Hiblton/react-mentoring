@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { MovieModal, DeleteMovieModal } from "../../components";
-import { MovieContext, selectMovie } from "../../context";
+import { selectMovie } from "../../features/movies/moviesSlice";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
-  const { dispatch } = useContext(MovieContext);
+  const dispatch = useDispatch();
+
   const [isEditMovieModalOpened, setEditMovieModalOpened] = useState(false);
   const [isDeleteMovieModalOpened, setDeleteMovieModalOpened] = useState(false);
 

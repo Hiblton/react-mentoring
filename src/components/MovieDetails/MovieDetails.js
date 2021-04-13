@@ -17,7 +17,7 @@ const MovieDetails = ({ movie }) => {
             <div className={styles.rating}>7.3</div>
           </div>
           <span className={styles.movieGenre}>{movie?.genre}</span>
-          <div className={`${styles.inlineFlex} ${styles.dateAndRintime}`}>
+          <div className={`${styles.inlineFlex} ${styles.dateAndRuntime}`}>
             <div className={styles.releaseDate}>
               {new Date(movie?.releaseDate)?.getFullYear()}
             </div>

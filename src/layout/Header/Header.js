@@ -1,5 +1,6 @@
 import styles from "./Header.module.scss";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Logo,
   Title,
@@ -9,10 +10,12 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
-import { MovieContext, selectMovie } from "./../../context";
+import { selectMovie } from "../../features/movies/moviesSlice";
 
 const Header = () => {
-  const { selectedMovie, dispatch } = useContext(MovieContext);
+  const dispatch = useDispatch();
+  const { selectedMovie } = useSelector((state) => state.movies);
+
   const [isAddMovieModalOpened, setAddMovieModalOpened] = useState(false);
 
   return (
@@ -38,7 +41,7 @@ const Header = () => {
           )}
         </div>
         {selectedMovie ? (
-          <MovieDetails movie={selectedMovie}></MovieDetails>
+          <MovieDetails movie={selectedMovie} />
         ) : (
           <div className={styles.titleWrapper}>
             <Title title="FIND YOUR MOVIE" />
