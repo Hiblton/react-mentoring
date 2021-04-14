@@ -10,7 +10,7 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
-import { selectMovie } from "../../features/movies/moviesSlice";
+import { selectMovieAction } from "../../features/Movies";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Header = () => {
           {selectedMovie ? (
             <button
               className={`${styles.button} ${styles.transparent}`}
-              onClick={() => dispatch(selectMovie(null))}
+              onClick={() => dispatch(selectMovieAction(null))}
             >
               SEARCH
             </button>

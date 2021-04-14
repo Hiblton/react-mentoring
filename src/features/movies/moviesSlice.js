@@ -1,4 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchMoviesAction, deleteMovieAction } from "./MoviesThunk";
 
 const initialState = {
   movies: [],
@@ -10,32 +11,28 @@ const initialState = {
   selectedMovie: null,
 };
 
-export const fetchMovies = createAsyncThunk(
-  "fetchMovies",
-  async (limit = 10) => {
-    const response = await fetch(`http://localhost:4000/movies?limit=${limit}`);
-    const movies = await response.json();
-    return movies;
-  }
-);
-
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    selectMovie: (state, action) => {
+    selectMovieAction: (state, action) => {
       state.selectedMovie = action.payload;
     },
   },
   extraReducers: {
-    [fetchMovies.fulfilled]: (state, action) => {
+    [fetchMoviesAction.fulfilled]: (state, action) => {
       const { data: movies, limit, offset, totalAmount } = action.payload;
       state.movies = movies;
       state.meta = { limit, offset, totalAmount };
     },
+    [deleteMovieAction.pending]: (state, action) => {
+      console.log('extraReducers', state, action);
+    },
   },
 });
 
-export const { selectMovie } = moviesSlice.actions;
-
 export default moviesSlice.reducer;
+
+export const { selectMovieAction } = moviesSlice.actions;
+
+export const moviesSelector = (state) => state.movies;

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { MovieModal, DeleteMovieModal } from "../../components";
-import { selectMovie } from "../../features/movies/moviesSlice";
+import { selectMovieAction } from "../../features/Movies";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
@@ -15,7 +15,7 @@ const MovieCard = (movie) => {
     <>
       <div
         className={styles.movieCard}
-        onClick={() => dispatch(selectMovie(movie))}
+        onClick={() => dispatch(selectMovieAction(movie))}
       >
         <div className={styles.actionButtons}>
           <button onClick={() => setEditMovieModalOpened(true)}>Edit</button>
