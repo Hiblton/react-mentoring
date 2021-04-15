@@ -11,17 +11,25 @@ const MovieCard = (movie) => {
   const [isEditMovieModalOpened, setEditMovieModalOpened] = useState(false);
   const [isDeleteMovieModalOpened, setDeleteMovieModalOpened] = useState(false);
 
+  const editClickHandle = (e) => {
+    e.stopPropagation();
+    setEditMovieModalOpened(true);
+  };
+
+  const deleteClickHandle = (e) => {
+    e.stopPropagation();
+    setDeleteMovieModalOpened(true);
+  };
+
   return (
     <>
       <div
         className={styles.movieCard}
-        onClick={() => dispatch(selectMovieAction(movie))}
+        onClick={() => dispatch(selectMovieAction(movie?.id))}
       >
         <div className={styles.actionButtons}>
-          <button onClick={() => setEditMovieModalOpened(true)}>Edit</button>
-          <button onClick={() => setDeleteMovieModalOpened(true)}>
-            Delete
-          </button>
+          <button onClick={editClickHandle}>Edit</button>
+          <button onClick={deleteClickHandle}>Delete</button>
         </div>
         <img
           className={styles.movieCover}

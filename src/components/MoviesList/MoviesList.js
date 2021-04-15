@@ -1,9 +1,10 @@
 import styles from "./MoviesList.module.scss";
 import { useSelector } from "react-redux";
 import { MovieCard, MoviesCounter, MoviesNotFound } from "../../components";
+import { moviesSelector } from "../../features/Movies";
 
 const MoviesList = () => {
-  const { movies, meta } = useSelector((state) => state.movies);
+  const { movies, meta } = useSelector(moviesSelector);
 
   return (
     <main>

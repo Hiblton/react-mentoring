@@ -1,16 +1,26 @@
 import { API_URL } from "../../config";
+import {
+  fetchMoviesAction,
+  clearSelectedMovieAction,
+} from "../../features/Movies";
 import { createRequest } from "../API/APIService";
 
-export const fetchMovies = async (params) =>
-  await createRequest({ url: `${API_URL}/movies`, params });
+export const fetchMoviesService = async (params = {}) => {
+  // TODO hardcoded limit for a demo
+  params.limit = 30;
+  return await createRequest({ url: `${API_URL}/movies`, params });
+};
 
-export const deleteMovie = async (id) => {
+export const selectMovieService = async (id, { dispatch }) => {
   if (!id) {
-    throw new Error("there is no movie ID provided");
+    dispatch(clearSelectedMovieAction());
+    return;
   }
 
-  return await createRequest({
-    url: `${API_URL}/movies/${id}`,
-    method: "DELETE",
-  });
+  return await createRequest({ url: `${API_URL}/movies/${id}` });
+};
+
+export const deleteMovieService = async (id, { dispatch }) => {
+  await createRequest({ url: `${API_URL}/movies/${id}`, method: "DELETE" });
+  dispatch(fetchMoviesAction());
 };

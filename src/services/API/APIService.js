@@ -1,6 +1,6 @@
 const mapToQueryParams = (params) => {
   if (Object.keys(params).length === 0) {
-    return '';
+    return "";
   }
 
   return `?${Object.entries(params)
@@ -15,5 +15,10 @@ export const createRequest = async ({
 }) => {
   const response = await fetch(url + mapToQueryParams(params), { method });
 
-  return await response.json();
+  // TODO response with empty body stumbles on .json() call
+  if (method === "DELETE") {
+    return response;
+  }
+
+  return response.json();
 };

@@ -10,11 +10,11 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
-import { selectMovieAction } from "../../features/Movies";
+import { moviesSelector, selectMovieAction } from "../../features/Movies";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { selectedMovie } = useSelector((state) => state.movies);
+  const { selectedMovie } = useSelector(moviesSelector);
 
   const [isAddMovieModalOpened, setAddMovieModalOpened] = useState(false);
 

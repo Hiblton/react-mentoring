@@ -8,7 +8,7 @@ import { fetchMoviesAction } from "./features/Movies";
 import "./reset.scss";
 import "./global.scss";
 
-store.dispatch(fetchMoviesAction({limit: 100}));
+store.dispatch(fetchMoviesAction());
 
 ReactDOM.render(
   <React.StrictMode>
