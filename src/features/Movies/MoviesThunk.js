@@ -8,5 +8,9 @@ export const fetchMoviesAction = createAsyncThunk(
 
 export const deleteMovieAction = createAsyncThunk(
   "deleteMovieAction",
-  deleteMovie
+  async (id, {dispatch}) => {
+    const response = await deleteMovie(id)
+    dispatch(fetchMoviesAction())
+    return response;
+  }
 );

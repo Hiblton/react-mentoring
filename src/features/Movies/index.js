@@ -1,4 +1,4 @@
-import moviesReducer, { selectMovieAction } from "./MoviesSlice";
+import moviesReducer, { selectMovieAction } from "./moviesSlice";
 import { fetchMoviesAction, deleteMovieAction } from "./MoviesThunk";
 
 export {

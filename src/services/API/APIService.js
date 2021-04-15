@@ -17,3 +17,9 @@ export const createRequest = async ({
 
   return await response.json();
 };
+
+export const createDeleteRequest = async ({
+  url
+}) => {
+  await fetch(url, { method: "DELETE"})
+}

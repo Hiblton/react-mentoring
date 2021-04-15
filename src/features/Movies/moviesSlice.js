@@ -26,8 +26,15 @@ const moviesSlice = createSlice({
       state.meta = { limit, offset, totalAmount };
     },
     [deleteMovieAction.pending]: (state, action) => {
-      console.log('extraReducers', state, action);
+      // console.log('extraReducers', state, action);
+      console.log("PENDING DELETE MOVIE", action)
     },
+    [deleteMovieAction.rejected]: (state, action) => {
+      console.log("FAILED DELETE MOVIE", action)
+    },
+    [deleteMovieAction.fulfilled]: (state, action) => {
+      console.log("SUCCESS DELETE MOVIE", action)
+    }
   },
 });
 
