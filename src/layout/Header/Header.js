@@ -10,7 +10,10 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
-import { moviesSelector, clearSelectedMovieAction } from "../../features/Movies";
+import {
+  moviesSelector,
+  clearSelectedMovieAction,
+} from "../../features/Movies";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -59,10 +62,8 @@ const Header = () => {
       </header>
 
       <section className={styles.toolbarWrapper}>
-        <FilterPanel
-          filterOptions={["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]}
-        />
-        <SortingPanel sortingOptions={["RELEASE", "RATING", "DURATION"]} />
+        <FilterPanel />
+        <SortingPanel />
       </section>
 
       {isAddMovieModalOpened && (

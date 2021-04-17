@@ -1,18 +1,42 @@
-import PropTypes from "prop-types";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchMoviesAction } from "../../features/Movies";
+import { useUpdateEffect } from "../../utils/CustomHooks";
 
 import styles from "./FilterPanel.module.scss";
 
-const FilterPanel = ({ activeFilter = "ALL", filterOptions = [] }) => {
+const DEFAULT_FILTER = "ALL";
+
+const FILTER_OPTIONS = ["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
+
+const FilterPanel = () => {
+  const dispatch = useDispatch();
+  const [activeFilter, setActiveFilter] = useState(DEFAULT_FILTER);
+
+  useUpdateEffect(() => {
+    dispatch(
+      fetchMoviesAction(
+        activeFilter !== DEFAULT_FILTER
+          ? {
+              filter: activeFilter,
+            }
+          : {}
+      )
+    );
+  }, [activeFilter]);
+
   return (
     <ul className={styles.filterWrapper}>
-      {filterOptions.map((item) => {
+      {FILTER_OPTIONS.map((item) => {
         return (
           <li
             className={`${styles.filterItem} ${
               activeFilter === item ? styles.active : ""
             }`}
             key={item}
-            tabIndex="0"
+            onClick={() => {
+              setActiveFilter(item);
+            }}
           >
             <span>{item}</span>
           </li>
@@ -23,8 +47,3 @@ const FilterPanel = ({ activeFilter = "ALL", filterOptions = [] }) => {
 };
 
 export { FilterPanel };
-
-FilterPanel.propTypes = {
-  activeFilter: PropTypes.string,
-  filterOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
