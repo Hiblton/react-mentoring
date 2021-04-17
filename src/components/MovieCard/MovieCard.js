@@ -46,7 +46,7 @@ const MovieCard = (movie) => {
       </div>
       {isEditMovieModalOpened && (
         <MovieModal
-          title="EDIT MOVIE"
+          modalTitle="EDIT MOVIE"
           movie={movie}
           onClose={() => setEditMovieModalOpened(false)}
         />

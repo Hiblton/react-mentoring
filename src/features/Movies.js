@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  addMovieService,
   deleteMovieService,
   fetchMoviesService,
   selectMovieService,
+  updateMovieService,
 } from "../services/Movies/MoviesService";
 
 const initialState = {
@@ -23,6 +25,16 @@ export const fetchMoviesAction = createAsyncThunk(
 export const selectMovieAction = createAsyncThunk(
   "selectMovieAction",
   selectMovieService
+);
+
+export const addMovieAction = createAsyncThunk(
+  "addMovieAction",
+  addMovieService
+);
+
+export const updateMovieAction = createAsyncThunk(
+  "updateMovieAction",
+  updateMovieService
 );
 
 export const deleteMovieAction = createAsyncThunk(

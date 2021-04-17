@@ -18,6 +18,9 @@
     height: 40px;
     padding: 12px;
   }
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
 }
 
 .formActions {

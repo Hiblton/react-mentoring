@@ -10,7 +10,7 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
-import { moviesSelector, selectMovieAction } from "../../features/Movies";
+import { moviesSelector, clearSelectedMovieAction } from "../../features/Movies";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Header = () => {
           {selectedMovie ? (
             <button
               className={`${styles.button} ${styles.transparent}`}
-              onClick={() => dispatch(selectMovieAction(null))}
+              onClick={() => dispatch(clearSelectedMovieAction())}
             >
               SEARCH
             </button>
@@ -41,7 +41,15 @@ const Header = () => {
           )}
         </div>
         {selectedMovie ? (
-          <MovieDetails movie={selectedMovie} />
+          <MovieDetails
+            title={selectedMovie.title}
+            releaseDate={selectedMovie.release_date}
+            genre={selectedMovie.genres?.join(", ")}
+            movieUrl={selectedMovie.poster_path}
+            overview={selectedMovie.overview}
+            runtime={selectedMovie.runtime}
+            rating={selectedMovie.rating}
+          />
         ) : (
           <div className={styles.titleWrapper}>
             <Title title="FIND YOUR MOVIE" />
@@ -59,7 +67,7 @@ const Header = () => {
 
       {isAddMovieModalOpened && (
         <MovieModal
-          title="ADD MOVIE"
+          modalTitle="ADD MOVIE"
           onClose={() => setAddMovieModalOpened(false)}
         />
       )}

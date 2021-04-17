@@ -1,8 +1,5 @@
 import { API_URL } from "../../config";
-import {
-  fetchMoviesAction,
-  clearSelectedMovieAction,
-} from "../../features/Movies";
+import { fetchMoviesAction } from "../../features/Movies";
 import { createRequest } from "../API/APIService";
 
 export const fetchMoviesService = async (params = {}) => {
@@ -11,13 +8,27 @@ export const fetchMoviesService = async (params = {}) => {
   return await createRequest({ url: `${API_URL}/movies`, params });
 };
 
-export const selectMovieService = async (id, { dispatch }) => {
-  if (!id) {
-    dispatch(clearSelectedMovieAction());
-    return;
-  }
-
+export const selectMovieService = async (id) => {
   return await createRequest({ url: `${API_URL}/movies/${id}` });
+};
+
+export const addMovieService = async (movie, { dispatch }) => {
+  await createRequest({
+    url: `${API_URL}/movies`,
+    method: "POST",
+    body: JSON.stringify(movie),
+  });
+  dispatch(fetchMoviesAction());
+};
+
+export const updateMovieService = async (movie, { dispatch }) => {
+  console.log(movie);
+  await createRequest({
+    url: `${API_URL}/movies`,
+    method: "PUT",
+    body: JSON.stringify(movie),
+  });
+  dispatch(fetchMoviesAction());
 };
 
 export const deleteMovieService = async (id, { dispatch }) => {
