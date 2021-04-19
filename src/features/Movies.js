@@ -10,9 +10,12 @@ import {
 const initialState = {
   movies: [],
   meta: {
-    limit: 0,
+    limit: 30,
     offset: 0,
     totalAmount: 0,
+    sortBy: "",
+    sortOrder: "",
+    filter: "",
   },
   selectedMovie: null,
 };
@@ -51,12 +54,19 @@ const moviesSlice = createSlice({
     clearSelectedMovieAction: (state) => {
       state.selectedMovie = null;
     },
+    setActiveFilterAction: (state, { payload }) => {
+      state.meta.filter = payload.filter;
+    },
+    setActiveSortingAction: (state, { payload }) => {
+      state.meta.sortBy = payload.sortBy;
+      state.meta.sortOrder = payload.sortOrder;
+    },
   },
   extraReducers: {
     [fetchMoviesAction.fulfilled]: (state, action) => {
       const { data: movies, limit, offset, totalAmount } = action.payload;
       state.movies = movies;
-      state.meta = { limit, offset, totalAmount };
+      state.meta = { ...state.meta, limit, offset, totalAmount };
     },
     [selectMovieAction.fulfilled]: (state, action) => {
       state.selectedMovie = action.payload;
@@ -66,4 +76,8 @@ const moviesSlice = createSlice({
 
 export const moviesReducer = moviesSlice.reducer;
 
-export const { clearSelectedMovieAction } = moviesSlice.actions;
+export const {
+  clearSelectedMovieAction,
+  setActiveFilterAction,
+  setActiveSortingAction,
+} = moviesSlice.actions;

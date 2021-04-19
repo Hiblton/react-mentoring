@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchMoviesAction } from "../../features/Movies";
+import {
+  fetchMoviesAction,
+  setActiveSortingAction,
+} from "../../features/Movies";
 import { useUpdateEffect } from "../../utils/CustomHooks";
 
 import styles from "./SortingPanel.module.scss";
@@ -16,11 +19,12 @@ const SortingPanel = () => {
 
   useUpdateEffect(() => {
     dispatch(
-      fetchMoviesAction({
+      setActiveSortingAction({
         sortBy: activeSorting.toLowerCase(),
         sortOrder: DEFAULT_ORDER,
       })
     );
+    dispatch(fetchMoviesAction());
   }, [activeSorting]);
 
   return (

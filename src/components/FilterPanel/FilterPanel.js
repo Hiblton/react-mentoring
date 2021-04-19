@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchMoviesAction } from "../../features/Movies";
+import {
+  fetchMoviesAction,
+  setActiveFilterAction,
+} from "../../features/Movies";
 import { useUpdateEffect } from "../../utils/CustomHooks";
 
 import styles from "./FilterPanel.module.scss";
@@ -14,15 +17,9 @@ const FilterPanel = () => {
   const [activeFilter, setActiveFilter] = useState(DEFAULT_FILTER);
 
   useUpdateEffect(() => {
-    dispatch(
-      fetchMoviesAction(
-        activeFilter !== DEFAULT_FILTER
-          ? {
-              filter: activeFilter,
-            }
-          : {}
-      )
-    );
+    const filter = activeFilter !== DEFAULT_FILTER ? activeFilter : "";
+    dispatch(setActiveFilterAction({ filter }));
+    dispatch(fetchMoviesAction());
   }, [activeFilter]);
 
   return (
