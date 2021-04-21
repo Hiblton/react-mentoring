@@ -5,6 +5,7 @@
   color: $white;
   cursor: pointer;
   position: relative;
+  width: 243px;
   .actionButtons {
     display: none;
     padding: 15px;
@@ -28,7 +29,6 @@
 
 .movieCover {
   height: 370px;
-  width: 243px;
 }
 
 .description {

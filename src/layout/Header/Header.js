@@ -1,5 +1,6 @@
 import styles from "./Header.module.scss";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Logo,
   Title,
@@ -9,10 +10,15 @@ import {
   MovieModal,
   MovieDetails,
 } from "../../components";
-import { MovieContext, selectMovie } from "./../../context";
+import {
+  moviesSelector,
+  clearSelectedMovieAction,
+} from "../../features/Movies";
 
 const Header = () => {
-  const { selectedMovie, dispatch } = useContext(MovieContext);
+  const dispatch = useDispatch();
+  const { selectedMovie } = useSelector(moviesSelector);
+
   const [isAddMovieModalOpened, setAddMovieModalOpened] = useState(false);
 
   return (
@@ -24,7 +30,7 @@ const Header = () => {
           {selectedMovie ? (
             <button
               className={`${styles.button} ${styles.transparent}`}
-              onClick={() => dispatch(selectMovie(null))}
+              onClick={() => dispatch(clearSelectedMovieAction())}
             >
               SEARCH
             </button>
@@ -38,7 +44,15 @@ const Header = () => {
           )}
         </div>
         {selectedMovie ? (
-          <MovieDetails movie={selectedMovie}></MovieDetails>
+          <MovieDetails
+            title={selectedMovie.title}
+            releaseDate={selectedMovie.release_date}
+            genre={selectedMovie.genres?.join(", ")}
+            movieUrl={selectedMovie.poster_path}
+            overview={selectedMovie.overview}
+            runtime={selectedMovie.runtime}
+            rating={selectedMovie.rating}
+          />
         ) : (
           <div className={styles.titleWrapper}>
             <Title title="FIND YOUR MOVIE" />
@@ -48,15 +62,13 @@ const Header = () => {
       </header>
 
       <section className={styles.toolbarWrapper}>
-        <FilterPanel
-          filterOptions={["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"]}
-        />
-        <SortingPanel sortingOptions={["RELEASE", "RATING", "DURATION"]} />
+        <FilterPanel />
+        <SortingPanel />
       </section>
 
       {isAddMovieModalOpened && (
         <MovieModal
-          title="ADD MOVIE"
+          modalTitle="ADD MOVIE"
           onClose={() => setAddMovieModalOpened(false)}
         />
       )}

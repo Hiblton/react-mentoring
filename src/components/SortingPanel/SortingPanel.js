@@ -1,13 +1,41 @@
-import PropTypes from "prop-types";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  fetchMoviesAction,
+  setActiveSortingAction,
+} from "../../features/Movies";
+import { useUpdateEffect } from "../../utils/CustomHooks";
 
 import styles from "./SortingPanel.module.scss";
 
-const SortingPanel = ({ activeSorting = "RELEASE", sortingOptions = [] }) => {
+const DEFAULT_SORTING = "RATING";
+const DEFAULT_ORDER = "ASC";
+
+const SORTING_OPTIONS = ["RATING", "RELEASE_DATE", "RUNTIME"];
+
+const SortingPanel = () => {
+  const dispatch = useDispatch();
+  const [activeSorting, setActiveSorting] = useState(DEFAULT_SORTING);
+
+  useUpdateEffect(() => {
+    dispatch(
+      setActiveSortingAction({
+        sortBy: activeSorting.toLowerCase(),
+        sortOrder: DEFAULT_ORDER,
+      })
+    );
+    dispatch(fetchMoviesAction());
+  }, [activeSorting]);
+
   return (
     <div className={styles.sortingWrapper}>
       <span className={styles.sortingLabel}>SORT BY</span>
-      <select className={styles.sortingSelect}>
-        {sortingOptions.map((item) => {
+      <select
+        className={styles.sortingSelect}
+        value={activeSorting}
+        onChange={(e) => setActiveSorting(e.target.value)}
+      >
+        {SORTING_OPTIONS.map((item) => {
           return (
             <option
               className={`${
@@ -26,8 +54,3 @@ const SortingPanel = ({ activeSorting = "RELEASE", sortingOptions = [] }) => {
 };
 
 export { SortingPanel };
-
-SortingPanel.propTypes = {
-  activeSorting: PropTypes.string,
-  sortingOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
-};

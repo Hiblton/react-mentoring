@@ -3,31 +3,68 @@ import PropTypes from "prop-types";
 import styles from "./MovieModal.module.scss";
 
 import { Modal } from "../../layout";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addMovieAction, updateMovieAction } from "../../features/Movies";
 
-const MovieModal = ({ title, movie, onClose }) => {
+const GENRE_OPTIONS = ["DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
+
+const MovieModal = ({ modalTitle, movie, onClose }) => {
+  const dispatch = useDispatch();
+
+  const [id, setId] = useState();
+  const [title, setTitle] = useState();
+  const [releaseDate, setReleaseDate] = useState();
+  const [movieUrl, setMovieUrl] = useState();
+  const [genre, setGenre] = useState();
+  const [overview, setOverview] = useState();
+  const [runtime, setRuntime] = useState();
+
+  useEffect(() => {
+    if (movie) {
+      setId(movie?.id);
+      setTitle(movie?.title);
+      setReleaseDate(movie?.releaseDate);
+      setMovieUrl(movie?.movieUrl);
+      setGenre(movie?.genre);
+      setOverview(movie?.overview);
+      setRuntime(movie?.runtime);
+    }
+  }, [movie]);
+
   const close = (e) => onClose && onClose(e);
 
-  const genreOptions = [
-    "Action & Adventure",
-    "Drama, Biography, Music",
-    "Oscar winning movie",
-  ];
+  const saveMovie = () => {
+    const movie = {
+      id,
+      title,
+      release_date: releaseDate,
+      poster_path: movieUrl,
+      genres: [genre],
+      runtime: +runtime,
+      overview,
+    };
+
+    dispatch(id ? updateMovieAction(movie) : addMovieAction(movie));
+    close();
+  };
 
   return (
-    <Modal title={title} onClose={() => close()}>
+    <Modal title={modalTitle} onClose={() => close()}>
       <form>
-        {movie?.id ? (
+        {id && (
           <div className={styles.formField}>
             <label>MOVIE ID</label>
-            <span>{movie?.id}</span>
+            <span>{id}</span>
           </div>
-        ) : null}
+        )}
         <div className={styles.formField}>
           <label>TITLE</label>
           <input
             required
             placeholder="Title here"
-            defaultValue={movie?.title}
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
           />
         </div>
         <div className={styles.formField}>
@@ -36,7 +73,8 @@ const MovieModal = ({ title, movie, onClose }) => {
             required
             placeholder="Select Date"
             type="date"
-            defaultValue={movie?.releaseDate}
+            onChange={(e) => setReleaseDate(e.target.value)}
+            value={releaseDate}
           />
         </div>
         <div className={styles.formField}>
@@ -45,7 +83,8 @@ const MovieModal = ({ title, movie, onClose }) => {
             required
             placeholder="Movie URL here"
             type="url"
-            defaultValue={movie?.movieUrl}
+            onChange={(e) => setMovieUrl(e.target.value)}
+            value={movieUrl}
           />
         </div>
         <div className={styles.formField}>
@@ -53,10 +92,11 @@ const MovieModal = ({ title, movie, onClose }) => {
           <select
             required
             placeholder="Select Genre"
-            defaultValue={movie?.genre}
+            onChange={(e) => setGenre(e.target.value)}
+            value={genre}
           >
             <option value="">Select Genre</option>
-            {genreOptions.map((option) => (
+            {GENRE_OPTIONS.map((option) => (
               <option value={option} key={option}>
                 {option}
               </option>
@@ -68,7 +108,8 @@ const MovieModal = ({ title, movie, onClose }) => {
           <input
             required
             placeholder="Overview here"
-            defaultValue={movie?.overview}
+            onChange={(e) => setOverview(e.target.value)}
+            value={overview}
           />
         </div>
         <div className={styles.formField}>
@@ -76,14 +117,20 @@ const MovieModal = ({ title, movie, onClose }) => {
           <input
             required
             placeholder="Runtime here"
-            defaultValue={movie?.runtime}
+            type="number"
+            onChange={(e) => setRuntime(e.target.value)}
+            value={runtime}
           />
         </div>
         <div className={styles.formActions}>
           <button type="reset" className={styles.secondaryButton}>
             RESET
           </button>
-          <button type="submit" className={styles.primaryButton}>
+          <button
+            type="submit"
+            className={styles.primaryButton}
+            onClick={saveMovie}
+          >
             SAVE
           </button>
         </div>
@@ -95,7 +142,7 @@ const MovieModal = ({ title, movie, onClose }) => {
 export { MovieModal };
 
 MovieModal.propTypes = {
-  title: PropTypes.string.isRequired,
+  modalTitle: PropTypes.string.isRequired,
   movie: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     title: PropTypes.string.isRequired,

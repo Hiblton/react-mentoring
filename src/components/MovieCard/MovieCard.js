@@ -1,25 +1,35 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { MovieModal, DeleteMovieModal } from "../../components";
-import { MovieContext, selectMovie } from "../../context";
+import { selectMovieAction } from "../../features/Movies";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
-  const { dispatch } = useContext(MovieContext);
+  const dispatch = useDispatch();
+
   const [isEditMovieModalOpened, setEditMovieModalOpened] = useState(false);
   const [isDeleteMovieModalOpened, setDeleteMovieModalOpened] = useState(false);
+
+  const editClickHandle = (e) => {
+    e.stopPropagation();
+    setEditMovieModalOpened(true);
+  };
+
+  const deleteClickHandle = (e) => {
+    e.stopPropagation();
+    setDeleteMovieModalOpened(true);
+  };
 
   return (
     <>
       <div
         className={styles.movieCard}
-        onClick={() => dispatch(selectMovie(movie))}
+        onClick={() => dispatch(selectMovieAction(movie?.id))}
       >
         <div className={styles.actionButtons}>
-          <button onClick={() => setEditMovieModalOpened(true)}>Edit</button>
-          <button onClick={() => setDeleteMovieModalOpened(true)}>
-            Delete
-          </button>
+          <button onClick={editClickHandle}>Edit</button>
+          <button onClick={deleteClickHandle}>Delete</button>
         </div>
         <img
           className={styles.movieCover}
@@ -36,7 +46,7 @@ const MovieCard = (movie) => {
       </div>
       {isEditMovieModalOpened && (
         <MovieModal
-          title="EDIT MOVIE"
+          modalTitle="EDIT MOVIE"
           movie={movie}
           onClose={() => setEditMovieModalOpened(false)}
         />
