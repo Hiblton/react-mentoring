@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./MovieDetails.module.scss";
-import { Title } from "./../Title/Title";
+import { Title } from "../Title/Title";
 
 const MovieDetails = (movie) => {
   return (
@@ -13,16 +13,14 @@ const MovieDetails = (movie) => {
         />
         <div className={styles.description}>
           <div className={styles.inlineFlex}>
-            <Title title={movie?.title}></Title>
+            <Title title={movie?.title} />
             {movie?.rating && (
               <div className={styles.rating}>{movie?.rating}</div>
             )}
           </div>
           <span className={styles.movieGenre}>{movie?.genre}</span>
           <div className={`${styles.inlineFlex} ${styles.dateAndRuntime}`}>
-            <div className={styles.releaseDate}>
-              {new Date(movie?.releaseDate)?.getFullYear()}
-            </div>
+            <div>{new Date(movie?.releaseDate)?.getFullYear()}</div>
             <div className={styles.runtime}>{movie?.runtime} min</div>
           </div>
           <p className={styles.overview}>{movie?.overview}</p>
