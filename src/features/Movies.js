@@ -10,12 +10,12 @@ import {
 const initialState = {
   movies: [],
   meta: {
-    limit: 30,
-    offset: 0,
-    totalAmount: 0,
-    sortBy: "",
-    sortOrder: "",
     filter: "",
+    search: "",
+    searchBy: "title",
+    sortBy: "",
+    sortOrder: "ASC",
+    totalAmount: 0,
   },
   selectedMovie: null,
 };
@@ -47,6 +47,8 @@ export const deleteMovieAction = createAsyncThunk(
 
 export const moviesSelector = (state) => state.movies;
 
+export const metaParamsSelector = (state) => state.movies.meta;
+
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
@@ -59,7 +61,9 @@ const moviesSlice = createSlice({
     },
     setActiveSortingAction: (state, { payload }) => {
       state.meta.sortBy = payload.sortBy;
-      state.meta.sortOrder = payload.sortOrder;
+    },
+    setSearchStringAction: (state, { payload }) => {
+      state.meta.search = payload;
     },
   },
   extraReducers: {
@@ -80,4 +84,5 @@ export const {
   clearSelectedMovieAction,
   setActiveFilterAction,
   setActiveSortingAction,
+  setSearchStringAction,
 } = moviesSlice.actions;

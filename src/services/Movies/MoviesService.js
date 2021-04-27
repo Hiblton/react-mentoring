@@ -24,7 +24,6 @@ export const addMovieService = async (movie, { dispatch }) => {
 };
 
 export const updateMovieService = async (movie, { dispatch }) => {
-  console.log(movie);
   await createRequest({
     url: `${API_URL}/movies`,
     method: "PUT",

@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { MovieModal, DeleteMovieModal } from "../../components";
-import { selectMovieAction } from "../../features/Movies";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const [isEditMovieModalOpened, setEditMovieModalOpened] = useState(false);
   const [isDeleteMovieModalOpened, setDeleteMovieModalOpened] = useState(false);
@@ -25,7 +24,7 @@ const MovieCard = (movie) => {
     <>
       <div
         className={styles.movieCard}
-        onClick={() => dispatch(selectMovieAction(movie?.id))}
+        onClick={() => history.push(`/film/${movie?.id}`)}
       >
         <div className={styles.actionButtons}>
           <button onClick={editClickHandle}>Edit</button>
