@@ -1,24 +1,23 @@
 ### React Mentoring Program 2021
 
-## Hometask 8
+## Hometask 9
 
 # Description
 
-Create routing for your application (via React Router).
+Write unit tests for your application (consider using Jest, @testing-library/react or Enzyme, react-test-renderer, React-test-utils, etc.).
 
-Add 404 (error page) and ‘No movies found’ page.
-Link app states between each other with React Router.
-By default, user lands on a new page with empty results state.
-When user clicks on a film item, redirect them to: localhost/film/id.
-Handle invalid URLs, display a 404 page, where user will be redirected in case of invalid URL. On switching search type or sorting type you shouldn’t switch any routes.
-When user performs a new search, you should redirect them to: localhost/search/Search%20Query.
-When a new user lands on the page with such URL, you should perform search and display results.
+Subtasks:
+
+1. Cover 1 simple presentational component with snapshot tests;
+2. Cover 1 reducer and all its actions with unit-tests;
+3. Measure coverage level with coverage report;
+4. Cover “Add movie” modal dialog components with unit-tests, mock all external dependencies using Jest mocks.
 
 Evaluation criteria\*
 
-2 - Add 404 and “No movies found” pages with markup; have 2+ pages which displays on different URLs;
-3 - Implement displaying 404 page for all invalid URLs;
-4 - By default, user lands on a new page with empty results page;
-5 - When user performs a search on the page, change URL and show search results; when new user enters the site using direct link with search parameters – show search results.
+2 - Subtask 1 is implemented;
+3 - Subtasks 2,3 are implemented;
+4 - Subtask 4 “Add movie” modal dialog and all its components coverage > 70%;
+5 - Global coverage > 90%; add unit tests for hooks.
 
-\*Each mark includes previous mark criteria.
+- Each mark includes previous mark criteria.
