@@ -10,6 +10,13 @@
     "build:prod": "cross-env NODE_ENV=production webpack",
     "test": "jest --collect-coverage"
   },
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(scss)$": "identity-obj-proxy"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hiblton/react-mentoring.git"
@@ -32,7 +39,9 @@
     "cross-env": "^7.0.3",
     "css-loader": "^5.1.0",
     "html-webpack-plugin": "^5.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
+    "redux-mock-store": "^1.5.4",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",

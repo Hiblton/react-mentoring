@@ -6,13 +6,17 @@ import { Portal } from "../";
 import { Title } from "../../components";
 
 const Modal = ({ title, onClose, children }) => {
-  close = (e) => onClose && onClose(e);
+  const close = (e) => onClose && onClose(e);
 
   return (
     <Portal>
       <div className={styles.overlay}>
         <div className={styles.modal}>
-          <button className={styles.closeIcon} onClick={close}>
+          <button
+            data-testid="close-modal-button"
+            className={styles.closeIcon}
+            onClick={close}
+          >
             x
           </button>
           <Title title={title} />
