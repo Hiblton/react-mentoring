@@ -9,20 +9,24 @@ describe("MovieModal", () => {
   const mockStore = configureStore();
   const onClose = jest.fn();
 
-  beforeEach(() => {
+  it("should render modal with correct title", () => {
     const store = mockStore(initialState);
     render(
       <Provider store={store}>
         <MovieModal modalTitle="ADD MOVIE" onClose={onClose} />
       </Provider>
     );
-  });
 
-  it("should render modal with correct title", () => {
     expect(screen.getByText("ADD MOVIE")).toBeDefined();
   });
 
   it("should fire onClose callback by clicking close button", () => {
+    const store = mockStore(initialState);
+    render(
+      <Provider store={store}>
+        <MovieModal modalTitle="ADD MOVIE" onClose={onClose} />
+      </Provider>
+    );
     fireEvent.click(screen.getByTestId("close-modal-button"));
 
     expect(onClose).toHaveBeenCalledTimes(1);
