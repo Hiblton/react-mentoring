@@ -2,20 +2,17 @@
 
 html,
 body,
-#root {
+#__next {
   background-color: $dark-grey;
   font-family: "Roboto", sans-serif;
   height: 100%;
-}
-
-#root {
   color: $white;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-#root main {
+#__next main {
   width: $contentWidth;
   margin: auto;
 }

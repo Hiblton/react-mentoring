@@ -1,23 +1,22 @@
 ### React Mentoring Program 2021
 
-## Hometask 9
+## Hometask 10
 
 # Description
 
-Write unit tests for your application (consider using Jest, @testing-library/react or Enzyme, react-test-renderer, React-test-utils, etc.).
+Implement server rendering in your NodeJS application.
 
-Subtasks:
-
-1. Cover 1 simple presentational component with snapshot tests;
-2. Cover 1 reducer and all its actions with unit-tests;
-3. Measure coverage level with coverage report;
-4. Cover “Add movie” modal dialog components with unit-tests, mock all external dependencies using Jest mocks.
+Use async actions, redux should provide initial state from server.
+Server should handle query parameters to compute correct initial state.
+Implement route masking. Next.js provides this functionality out of the box, but its usage is not required. Example of route masking: localhost/search/Hello%20Friend; localhost/search/Search%20Query.
+When a new user lands on the page with such URL, you should perform search and display results.
+Add code splitting to your app. You can use dynamic import() syntax in conjunction with webpack and React.lazy, some library (react-loadable), or next.js.
 
 Evaluation criteria\*
 
-2 - Subtask 1 is implemented;
-3 - Subtasks 2,3 are implemented;
-4 - Subtask 4 “Add movie” modal dialog and all its components coverage > 70%;
-5 - Global coverage > 90%; add unit tests for hooks.
+2 - Async actions, redux provides initial state from server;
+3 - Server app handles query params to compute initial state;
+4 - Route masking. Can be implemented, or mentee can switch to next.js for SSR;
+5 - Code splitting for optimized performance. Goes out of the box with next.js.
 
-- Each mark includes previous mark criteria.
+\*Each mark includes previous mark criteria.

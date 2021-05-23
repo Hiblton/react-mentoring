@@ -1,6 +1,6 @@
-import styles from "./PageNotFound.module.scss";
+import styles from "./index.module.scss";
 
-import { Link } from "react-router-dom";
+import Link from 'next/link'
 
 import { Logo, Title } from "../../components";
 
@@ -9,7 +9,7 @@ const PageNotFound = () => (
     <Logo />
     <Title title="404" />
     <Title title="Page Not Found" />
-    <Link to="/">
+    <Link href="/">
       <button type="button" className={styles.secondaryButton}>
         GO BACK TO HOME
       </button>
@@ -17,4 +17,4 @@ const PageNotFound = () => (
   </div>
 );
 
-export { PageNotFound };
+export default PageNotFound;

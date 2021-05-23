@@ -1,5 +1,5 @@
-import { HomePage } from "./Home/Home";
-import { PageNotFound } from "./PageNotFound/PageNotFound";
+import { Home } from "../layout";
 
-export { HomePage };
-export { PageNotFound };
+const RootPage = () => <Home />;
+
+export default RootPage;

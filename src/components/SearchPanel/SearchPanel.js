@@ -1,13 +1,13 @@
 import styles from "./SearchPanel.module.scss";
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 import { metaParamsSelector } from "../../features/Movies";
 
 const SearchPanel = () => {
   const { search } = useSelector(metaParamsSelector);
   const searchInputRef = useRef();
-  const history = useHistory();
+  const router = useRouter();
 
   useEffect(() => {
     searchInputRef.current.value = search;
@@ -16,7 +16,7 @@ const SearchPanel = () => {
   const onSearch = (e) => {
     e.preventDefault();
     const searchValue = searchInputRef.current.value;
-    history.push(searchValue ? `/search/${searchValue}` : "/");
+    router.push(searchValue ? `/search/${searchValue}` : "/");
   };
 
   return (
