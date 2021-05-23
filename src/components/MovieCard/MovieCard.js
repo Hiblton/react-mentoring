@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 import { MovieModal, DeleteMovieModal } from "../../components";
 import styles from "./movieCard.module.scss";
 
 const MovieCard = (movie) => {
-  const history = useHistory();
+  const router = useRouter();
 
   const [isEditMovieModalOpened, setEditMovieModalOpened] = useState(false);
   const [isDeleteMovieModalOpened, setDeleteMovieModalOpened] = useState(false);
@@ -24,7 +24,7 @@ const MovieCard = (movie) => {
     <>
       <div
         className={styles.movieCard}
-        onClick={() => history.push(`/film/${movie?.id}`)}
+        onClick={() => router.push(`/film/${movie?.id}`)}
       >
         <div className={styles.actionButtons}>
           <button onClick={editClickHandle}>Edit</button>

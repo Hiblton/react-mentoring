@@ -4,11 +4,10 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development webpack serve",
-    "start:prod": "cross-env NODE_ENV=production webpack serve",
-    "build:dev": "cross-env NODE_ENV=development webpack",
-    "build:prod": "cross-env NODE_ENV=production webpack",
-    "test": "jest --collect-coverage"
+    "test": "jest --collect-coverage",
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "next:start": "next start"
   },
   "jest": {
     "verbose": true,
@@ -55,9 +54,10 @@
     "@babel/runtime": "^7.13.10",
     "@reduxjs/toolkit": "^1.5.1",
     "formik": "^2.2.6",
+    "next": "^10.2.0",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-error-boundary": "^3.1.0",
     "react-redux": "^7.2.3",
     "react-router": "^5.2.0",
